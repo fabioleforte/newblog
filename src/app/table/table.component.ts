@@ -1,20 +1,19 @@
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Blog } from './../models/blog.model';
 import { ApiService } from './../services/api.services';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: [ './table.component.scss' ]
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnDestroy {
 
   listTable: Blog[];
+  unSubscrib: Subscription;
 
-
-  // listTable$: Observable<Blog[]>;
 
   constructor(
     private apiService: ApiService,
@@ -22,7 +21,7 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.apiService.listBlog().subscribe(list => {
+    this.unSubscrib = this.apiService.listBlog().subscribe(list => {
       this.listTable = list;
     });
     this.delItemList(new Blog());
@@ -41,5 +40,11 @@ export class TableComponent implements OnInit {
     this.apiService.delete(blog).subscribe(_ => {
       this.listTable.splice(blog.id, 1);
     });
+  }
+
+  ngOnDestroy() {
+
+    this.unSubscrib.unsubscribe();
+
   }
 }

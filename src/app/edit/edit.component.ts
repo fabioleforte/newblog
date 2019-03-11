@@ -31,7 +31,6 @@ export class EditComponent implements OnInit {
     this.route.params.subscribe((params) => {
 
       const id = params[ 'id' ];
-      console.log(id);
 
       const edit$ = this.apiService.loadById(id);
 
@@ -73,14 +72,11 @@ export class EditComponent implements OnInit {
 
   sendDataEdit() {
     this.submitted = true;
-    // if (this.formEdit.valid) {
-    this.apiService.update(this.blog).subscribe(x => {
 
-      console.log(x);
+    this.apiService.update(this.blog).subscribe(
+      () => this.location.back()
+    );
 
-      // () => this.location.back()
-    });
-    // }
   }
 
 
