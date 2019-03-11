@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { Blog } from './../models/blog.model';
 import { ApiService } from './../services/api.services';
 import { Component, OnInit } from '@angular/core';
@@ -15,7 +16,10 @@ export class TableComponent implements OnInit {
 
   // listTable$: Observable<Blog[]>;
 
-  constructor(private apiService: ApiService) { }
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.apiService.listBlog().subscribe(list => {
@@ -25,15 +29,12 @@ export class TableComponent implements OnInit {
 
   }
 
-  // updateItemList(blog: Blog) {
+  onEdit(id) {
 
-  //   this.listTable = this.listTable.filter(h => h !== blog);
+    this.router.navigate([ 'edit', id ]);
 
-  //   // this.apiService.update(blog).subscribe();
-  //   console.log(this.listTable);
+  }
 
-
-  // }
 
   delItemList(blog: Blog) {
     this.listTable = this.listTable.filter(h => h !== blog);

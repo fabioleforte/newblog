@@ -1,0 +1,38 @@
+<div class="w3-row">
+  <form [formGroup]="formEdit" novalidate>
+    <div class="w3-col l12 s12">
+      <div class="w3-card-4 w3-margin w3-white">
+        <br>
+        <div class="w3-container">
+          <label for="title"> Title:
+            <input type="text" formControlName="title" style="margin-left: 20px; ">
+          </label>
+        </div>
+        <br>
+        <div class="w3-container">
+          <label for="subtitle"> Subtitle:
+            <input type="text" formControlName="subtitle">
+          </label>
+        </div>
+        <br>
+        <div class="w3-container">
+          <div class="w3-col m8 s12">
+            <label for="comment">
+              <span>Content:</span>
+            </label>
+          </div>
+          <br>
+          <textarea formControlName="comment" id="" cols="30" rows="10"></textarea>
+        </div>
+        <br>
+        <div class="w3-container">
+          <div class="w3-col m8 s12" style="text-align: center">
+            <button type="submit" class="submit" (click)="sendDataEdit()" [disabled]="formEdit.invalid" [routerLink]="['/table']" >Submit</button>
+            <button class="cancel" (click)="onCancel()">Cancel</button>
+          </div>
+        </div>
+        <br>
+      </div>
+    </div>
+  </form>
+</div>

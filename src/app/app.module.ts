@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
 import { ModalComponent } from './modal/modal.component';
 import { TableComponent } from './table/table.component';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TableComponent } from './table/table.component';
     FormComponent,
     TableComponent,
     ModalComponent,
+    EditComponent,
 
   ],
   imports: [

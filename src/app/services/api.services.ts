@@ -5,6 +5,11 @@ import { Blog } from './../models/blog.model';
 import { Observable, empty } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -26,14 +31,19 @@ export class ApiService {
   }
 
   create(blog: Blog) {
-    return this.http.post(`${API_URL}`, blog).pipe(take(1));
+    return this.http.post(`${API_URL}`, blog, httpOptions).pipe(take(1));
   }
 
-  update(id: number): Observable<any> {
+  loadById(id) {
+    return this.http.get(`${API_URL}/${id}`)
+      .pipe(take(1));
+  }
 
-    return this.http.put(`${API_URL}`, id)
+  update(blog: Blog): Observable<any> {
+
+    return this.http.put(`${API_URL}`, blog, httpOptions)
       .pipe(
-        tap(console.log),
+        tap(_ => console.log(`updated hero id=${blog.id}`)),
         catchError(error => {
           console.log(error);
           return empty();
@@ -44,7 +54,7 @@ export class ApiService {
   delete(blog: Blog | number): Observable<Blog> {
 
     const id = typeof blog === 'number' ? blog : blog.id;
-    return this.http.delete<Blog>(`${API_URL}/${id}`)
+    return this.http.delete<Blog>(`${API_URL}/${id}`, httpOptions)
       .pipe(
         tap(console.log),
         catchError(error => {

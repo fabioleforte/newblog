@@ -21,7 +21,7 @@
             <tr>
               <td>
                 <span>{{item.title}}</span>
-                <div style="text-align: right"><button type="button" class="buttomEdit">Edit</button>
+                <div style="text-align: right"><button type="button" class="buttomEdit" (click)="onEdit(item.id)">Edit</button>
                   <button type="button" class="buttomDel" (click)=" delItemList(item)">Del</button>
                 </div>
               </td>
