@@ -1,0 +1,41 @@
+<div style="text-align: right">
+  <button type="button" class="buttomNew" [routerLink]="['/register']">New</button>
+</div>
+<div class="w3-row">
+  <div class="w3-col l12 s12">
+    <div class="w3-card-4 w3-margin w3-white">
+      <div class="w3-container">
+        <h1>
+          <b>TITLE HEADING</b>
+        </h1>
+      </div>
+      <div class="w3-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center">POST</th>
+            </tr>
+            <hr>
+          </thead>
+          <tbody *ngFor="let item of listTable">
+            <tr>
+              <td>
+                <span>{{item.title}}</span>
+                <div style="text-align: right"><button type="button" class="buttomEdit">Edit</button>
+                  <button type="button" class="buttomDel" (click)=" delItemList(item)">Del</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>{{ item.subtitle}}</td>
+            </tr>
+            <hr>
+          </tbody>
+
+        </table>
+      </div>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>

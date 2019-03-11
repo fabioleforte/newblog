@@ -1,0 +1,36 @@
+<header>
+  <h1>Modal</h1>
+  <style type="text/css">
+    .modal {
+      position: fixed;
+      top: 1%;
+      left: 30%;
+      bottom: auto;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.75);
+      opacity: 0;
+
+    }
+
+    .modal:target {
+      opacity: 1;
+      pointer-events: auto;
+
+    }
+
+    .fechar {
+      text-decoration: none;
+    }
+
+  </style>
+</header>
+
+<body>
+  <a href="#abrir">Abrir Modal</a>
+
+  <div id="abrir" class="modal">
+    <a href="#fechar" class="fechar">Fechar</a>
+    <h2>Titulo do modal</h2>
+    <p>Conteúdo modal</p>
+  </div>
+</body>
