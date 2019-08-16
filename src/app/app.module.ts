@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { HomeComponent } from './home/home.component';
 import { ListComponent } from './list/list.component';
-import { ModalComponent } from './modal/modal.component';
 import { TableComponent } from './table/table.component';
 import { EditComponent } from './edit/edit.component';
 
@@ -19,7 +18,6 @@ import { EditComponent } from './edit/edit.component';
     ListComponent,
     FormComponent,
     TableComponent,
-    ModalComponent,
     EditComponent,
 
   ],
@@ -30,6 +28,6 @@ import { EditComponent } from './edit/edit.component';
     ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
